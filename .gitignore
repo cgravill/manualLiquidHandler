@@ -1,0 +1,62 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
+*.test
+*.prof
+
+# random sequence files
+
+*.fasta
+
+antha/bradford.go
+
+antha/antha
+
+bradford/bradford.go
+
+example/example_run/example_run
+
+cmd/antha/antha
+
+example/example.go
+
+reference/reference_run/reference_run
+
+cmd/anthadoc/anthadoc
+
+examples/promoter/promoter.go
+
+cmd/anthafmt/anthafmt
+
+.idea
+*.iml
+
+*.swp
+
+.DS_Store
+*/.DS_Store
+
+reports/
+
+# test files for driver
+#
+*.sqlite

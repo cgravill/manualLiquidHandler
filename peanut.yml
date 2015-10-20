@@ -1,0 +1,13 @@
+name: manualLiquidHandler
+peanutversion: 0.0.1
+version: 0.0.1
+dependson:
+modules:
+  goservice:
+  golang:
+    package: github.com/antha-lang/manualLiquidHandler
+    devpackages:
+    buildpaths:
+      - ~internal
+  docker:
+    packages:
