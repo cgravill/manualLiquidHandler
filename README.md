@@ -176,3 +176,10 @@ following output will be appended on the client side
 2015/10/08 11:19:44 Done 3: Ret_1:<Arg_1:true Arg_3:"REMOVEALLPLATES ACK" > 
 ```
 
+AnthaRun as Client
+==================
+Using [antharun](http://github.com/antha-lang/antha) as a client to the manualLiquidHandler allows the debugging of protocols and study of the different actions that play a role in the execution of such protocol. The following command will run a compiled protocol instantiating a grpc driver on the antharun side that will connect on the specified port to the manualLiquidHandler execution server.
+
+```
+antharun --workflow wf.json --parameters params.json --driver localhost:50051
+```
