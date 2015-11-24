@@ -1,22 +1,22 @@
 // manual.go: Part of the Antha language
 // Copyright (C) 2015 The Antha authors. All rights reserved.
-// 
+//
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2
 // of the License, or (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-// 
+//
 // For more information relating to the software or licensing issues please
-// contact license@antha-lang.org or write to the Antha team c/o 
+// contact license@antha-lang.org or write to the Antha team c/o
 // Synthace Ltd. The London Bioscience Innovation Centre
 // 2 Royal College St, London NW1 0NH UK
 
@@ -25,10 +25,10 @@ package manualLiquidHandler
 import (
 	"fmt"
 
+	"github.com/antha-lang/antha/antha/anthalib/wtype"
+	"github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
 	liquidhandlingDriver "github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
 	"github.com/antha-lang/manualLiquidHandler/internal/github.com/twinj/uuid"
-	"github.com/antha-lang/manualLiquidHandler/internal/golang.org/x/net/context"
-	"github.com/antha-lang/antha/antha/anthalib/wtype"
 )
 
 //Manual struct that implements the liquidHandlerDriver and routes all functions via the underlying ManualExecuter
@@ -154,18 +154,9 @@ func (m *Manual) Finalize(c context.Context, r *liquidhandlingDriver.FinalizeReq
 	}, nil
 }
 func (m *Manual) GetCapabilities(c context.Context, r *liquidhandlingDriver.GetCapabilitiesRequest) (*liquidhandlingDriver.GetCapabilitiesReply, error) {
-	//res := m.translateCall("GETCAPABILITIES", r)
-	//if res.Error != nil {
-	//	return nil, res.Error
-	//}
-	return &liquidhandlingDriver.GetCapabilitiesReply{
-		nil,
-		&liquidhandlingDriver.CommandStatusMessage{
-			true,
-			0,
-			"GETCAPABILITIES ACK",
-		},
-	}, nil
+	var s dummyserver
+
+	return s.GetCapabilities()
 }
 func (m *Manual) GetCurrentPosition(c context.Context, r *liquidhandlingDriver.GetCurrentPositionRequest) (*liquidhandlingDriver.GetCurrentPositionReply, error) {
 	//res := m.translateCall("STOP", r)
