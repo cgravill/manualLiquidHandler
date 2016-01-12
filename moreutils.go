@@ -30,8 +30,8 @@ import (
 	wunit "github.com/antha-lang/antha/antha/anthalib/wunit"
 	driver "github.com/antha-lang/antha/microArch/driver"
 	liquidhandling "github.com/antha-lang/antha/microArch/driver/liquidhandling"
-	"github.com/antha-lang/antha/microArch/factory"
 	pb "github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
+	factory "github.com/antha-lang/manualLiquidHandler/factory"
 
 	"log"
 )
