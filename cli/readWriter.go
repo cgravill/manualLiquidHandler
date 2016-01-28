@@ -97,10 +97,10 @@ func (rw *ReadWriterExecutor) Init() error {
 			if res, err := rr.ReadString('\n'); err != nil {
 				// If stdin is closed etc., just treat as success
 				myErr = nil
-			} else if strings.TrimSpace(res) == "y" {
+			} else if t := strings.TrimSpace(res); t == "y" {
 				myErr = nil
 			} else {
-				myErr = errors.New(res)
+				myErr = errors.New(t)
 			}
 			rw.cmdOut[r.Id] <- *manualLiquidHandler.NewCLICommandResult(r.Id, myErr)
 			close(rw.cmdOut[r.Id])
