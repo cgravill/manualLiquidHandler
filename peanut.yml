@@ -2,12 +2,20 @@ name: manualLiquidHandler
 peanutversion: 0.0.1
 version: 0.0.1
 dependson:
+  - antha
 modules:
   goservice:
+    deploypackage: github.com/antha-lang/manualLiquidHandler/server
+    exposeport: 50051
   golang:
     package: github.com/antha-lang/manualLiquidHandler
-    devpackages:
-    buildpaths:
+    buildpackages:
+      - ./...
+      - github.com/antha-lang/antha/cmd/antharun
       - ~internal
+  compose:
+    - testpaths:
+        - test_scripts
   docker:
     packages:
+      - libglpk-dev
