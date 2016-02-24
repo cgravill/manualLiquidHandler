@@ -10,6 +10,7 @@ rpc GetCapabilities (GetCapabilitiesRequest) returns (GetCapabilitiesReply) {}
 rpc GetCurrentPosition (GetCurrentPositionRequest) returns (GetCurrentPositionReply) {}
 rpc GetHeadState (GetHeadStateRequest) returns (GetHeadStateReply) {}
 rpc GetPositionState (GetPositionStateRequest) returns (GetPositionStateReply) {}
+rpc GetOutputFile(GetOutputFileRequest) returns (GetOutputFileReply) {}
 rpc GetStatus (GetStatusRequest) returns (GetStatusReply) {}
 rpc Go (GoRequest) returns (GoReply) {}
 rpc Initialize (InitializeRequest) returns (InitializeReply) {}
@@ -42,157 +43,14 @@ map<string,string>map_field=1;
 message AnyMessage{
 string Arg_1=1;
 }
-message AddPlateToRequest {
-string arg_1 = 1;
-AnyMessage arg_2 = 2;
-string arg_3 = 3;
-}
-message AddPlateToReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message MoveRawRequest {
-int64 arg_1 = 1;
-double arg_2 = 2;
-double arg_3 = 3;
-double arg_4 = 4;
-}
-message MoveRawReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message UnloadTipsRequest {
-ArrayOfint64 arg_1 = 1;
-int64 arg_2 = 2;
-int64 arg_3 = 3;
-ArrayOfstring arg_4 = 4;
-ArrayOfstring arg_5 = 5;
-ArrayOfstring arg_6 = 6;
-}
-message UnloadTipsReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message WaitRequest {
-double arg_1 = 1;
-}
-message WaitReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message GetPositionStateRequest {
-string arg_1 = 1;
-}
-message GetPositionStateReply {
-string Ret_1 = 1;
-CommandStatusMessage Ret_2 = 2;
-}
-message StopRequest {
-}
-message StopReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message CloseRequest {
-}
-message CloseReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message FinalizeRequest {
-}
-message FinalizeReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message LoadAdaptorRequest {
-int64 arg_1 = 1;
-}
-message LoadAdaptorReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message MixRequest {
-int64 arg_1 = 1;
-ArrayOfdouble arg_2 = 2;
-ArrayOfstring arg_3 = 3;
-ArrayOfint64 arg_4 = 4;
-int64 arg_5 = 5;
-ArrayOfstring arg_6 = 6;
-ArrayOfbool arg_7 = 7;
-}
-message MixReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message UnloadHeadRequest {
-int64 arg_1 = 1;
-}
-message UnloadHeadReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message AspirateRequest {
-ArrayOfdouble arg_1 = 1;
-ArrayOfbool arg_2 = 2;
-int64 arg_3 = 3;
-int64 arg_4 = 4;
-ArrayOfstring arg_5 = 5;
-ArrayOfstring arg_6 = 6;
-ArrayOfbool arg_7 = 7;
-}
-message AspirateReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message GetCurrentPositionRequest {
-int64 arg_1 = 1;
-}
-message GetCurrentPositionReply {
-string Ret_1 = 1;
-CommandStatusMessage Ret_2 = 2;
-}
-message LightsOnRequest {
-}
-message LightsOnReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message MessageRequest {
-int64 arg_1 = 1;
-string arg_2 = 2;
-string arg_3 = 3;
-bool arg_4 = 4;
-}
-message MessageReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message RemoveAllPlatesRequest {
-}
-message RemoveAllPlatesReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message SetPipetteSpeedRequest {
-int64 arg_1 = 1;
-int64 arg_2 = 2;
-double arg_3 = 3;
-}
-message SetPipetteSpeedReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message GetStatusRequest {
-}
-message GetStatusReply {
-MapstringAnyMessageMessage Ret_1 = 1;
-CommandStatusMessage Ret_2 = 2;
-}
-message GoRequest {
-}
-message GoReply {
-CommandStatusMessage Ret_1 = 1;
-}
 message InitializeRequest {
 }
 message InitializeReply {
 CommandStatusMessage Ret_1 = 1;
 }
-message LoadTipsRequest {
-ArrayOfint64 arg_1 = 1;
-int64 arg_2 = 2;
-int64 arg_3 = 3;
-ArrayOfstring arg_4 = 4;
-ArrayOfstring arg_5 = 5;
-ArrayOfstring arg_6 = 6;
+message OpenRequest {
 }
-message LoadTipsReply {
+message OpenReply {
 CommandStatusMessage Ret_1 = 1;
 }
 message ResetPistonsRequest {
@@ -202,18 +60,10 @@ int64 arg_2 = 2;
 message ResetPistonsReply {
 CommandStatusMessage Ret_1 = 1;
 }
-message SetPositionStateRequest {
-string arg_1 = 1;
-MapstringAnyMessageMessage arg_2 = 2;
+message CloseRequest {
 }
-message SetPositionStateReply {
+message CloseReply {
 CommandStatusMessage Ret_1 = 1;
-}
-message GetCapabilitiesRequest {
-}
-message GetCapabilitiesReply {
-LHPropertiesMessage Ret_1 = 1;
-CommandStatusMessage Ret_2 = 2;
 }
 message MoveRequest {
 ArrayOfstring arg_1 = 1;
@@ -228,34 +78,10 @@ int64 arg_8 = 8;
 message MoveReply {
 CommandStatusMessage Ret_1 = 1;
 }
-message SetDriveSpeedRequest {
-string arg_1 = 1;
-double arg_2 = 2;
-}
-message SetDriveSpeedReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message GetHeadStateRequest {
+message UnloadHeadRequest {
 int64 arg_1 = 1;
 }
-message GetHeadStateReply {
-string Ret_1 = 1;
-CommandStatusMessage Ret_2 = 2;
-}
-message LightsOffRequest {
-}
-message LightsOffReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message OpenRequest {
-}
-message OpenReply {
-CommandStatusMessage Ret_1 = 1;
-}
-message UpdateMetaDataRequest {
-PtrToLHPropertiesMessage arg_1 = 1;
-}
-message UpdateMetaDataReply {
+message UnloadHeadReply {
 CommandStatusMessage Ret_1 = 1;
 }
 message DispenseRequest {
@@ -270,10 +96,102 @@ ArrayOfbool arg_7 = 7;
 message DispenseReply {
 CommandStatusMessage Ret_1 = 1;
 }
-message LoadHeadRequest {
+message FinalizeRequest {
+}
+message FinalizeReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message GetCurrentPositionRequest {
 int64 arg_1 = 1;
 }
-message LoadHeadReply {
+message GetCurrentPositionReply {
+string Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
+}
+message GetStatusRequest {
+}
+message GetStatusReply {
+MapstringAnyMessageMessage Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
+}
+message SetPipetteSpeedRequest {
+int64 arg_1 = 1;
+int64 arg_2 = 2;
+double arg_3 = 3;
+}
+message SetPipetteSpeedReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message StopRequest {
+}
+message StopReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message WaitRequest {
+double arg_1 = 1;
+}
+message WaitReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message AspirateRequest {
+ArrayOfdouble arg_1 = 1;
+ArrayOfbool arg_2 = 2;
+int64 arg_3 = 3;
+int64 arg_4 = 4;
+ArrayOfstring arg_5 = 5;
+ArrayOfstring arg_6 = 6;
+ArrayOfbool arg_7 = 7;
+}
+message AspirateReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message GetPositionStateRequest {
+string arg_1 = 1;
+}
+message GetPositionStateReply {
+string Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
+}
+message GetOutputFileRequest{
+}
+message GetOutputFileReply{
+string Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
+}
+message GoRequest {
+}
+message GoReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message MixRequest {
+int64 arg_1 = 1;
+ArrayOfdouble arg_2 = 2;
+ArrayOfstring arg_3 = 3;
+ArrayOfint64 arg_4 = 4;
+int64 arg_5 = 5;
+ArrayOfstring arg_6 = 6;
+ArrayOfbool arg_7 = 7;
+}
+message MixReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message LightsOnRequest {
+}
+message LightsOnReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message MoveRawRequest {
+int64 arg_1 = 1;
+double arg_2 = 2;
+double arg_3 = 3;
+double arg_4 = 4;
+}
+message MoveRawReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message RemoveAllPlatesRequest {
+}
+message RemoveAllPlatesReply {
 CommandStatusMessage Ret_1 = 1;
 }
 message RemovePlateAtRequest {
@@ -288,29 +206,94 @@ int64 arg_1 = 1;
 message UnloadAdaptorReply {
 CommandStatusMessage Ret_1 = 1;
 }
-message CommandStatusMessage {
-	bool Arg_1 = 1;
-	int64 Arg_2 = 2;
-	string Arg_3 = 3;
+message AddPlateToRequest {
+string arg_1 = 1;
+AnyMessage arg_2 = 2;
+string arg_3 = 3;
 }
-message ArrayOfstring{
-	repeated string arg_1=1;
+message AddPlateToReply {
+CommandStatusMessage Ret_1 = 1;
 }
-message ArrayOfint64{
-	repeated int64 arg_1=1;
+message GetHeadStateRequest {
+int64 arg_1 = 1;
 }
-message ArrayOfdouble{
-	repeated double arg_1=1;
+message GetHeadStateReply {
+string Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
 }
-message ArrayOfbool{
-	repeated bool arg_1=1;
+message LoadAdaptorRequest {
+int64 arg_1 = 1;
 }
-message MapstringAnyMessageMessageFieldEntry{
-string key = 1;
-AnyMessage value = 2;
+message LoadAdaptorReply {
+CommandStatusMessage Ret_1 = 1;
 }
-message MapstringAnyMessageMessage{
-repeated MapstringAnyMessageMessageFieldEntry map_field =1;
+message LoadHeadRequest {
+int64 arg_1 = 1;
+}
+message LoadHeadReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message UpdateMetaDataRequest {
+PtrToLHPropertiesMessage arg_1 = 1;
+}
+message UpdateMetaDataReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message GetCapabilitiesRequest {
+}
+message GetCapabilitiesReply {
+LHPropertiesMessage Ret_1 = 1;
+CommandStatusMessage Ret_2 = 2;
+}
+message LightsOffRequest {
+}
+message LightsOffReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message SetPositionStateRequest {
+string arg_1 = 1;
+MapstringAnyMessageMessage arg_2 = 2;
+}
+message SetPositionStateReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message UnloadTipsRequest {
+ArrayOfint64 arg_1 = 1;
+int64 arg_2 = 2;
+int64 arg_3 = 3;
+ArrayOfstring arg_4 = 4;
+ArrayOfstring arg_5 = 5;
+ArrayOfstring arg_6 = 6;
+}
+message UnloadTipsReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message LoadTipsRequest {
+ArrayOfint64 arg_1 = 1;
+int64 arg_2 = 2;
+int64 arg_3 = 3;
+ArrayOfstring arg_4 = 4;
+ArrayOfstring arg_5 = 5;
+ArrayOfstring arg_6 = 6;
+}
+message LoadTipsReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message MessageRequest {
+int64 arg_1 = 1;
+string arg_2 = 2;
+string arg_3 = 3;
+bool arg_4 = 4;
+}
+message MessageReply {
+CommandStatusMessage Ret_1 = 1;
+}
+message SetDriveSpeedRequest {
+string arg_1 = 1;
+double arg_2 = 2;
+}
+message SetDriveSpeedReply {
+CommandStatusMessage Ret_1 = 1;
 }
 message LHPropertiesMessage {
 	string Arg_1 = 1;
@@ -347,55 +330,29 @@ message LHPropertiesMessage {
 message PtrToLHPropertiesMessage{
 	LHPropertiesMessage arg_1=1;
 }
-message LHChannelParameterMessage {
-	string Arg_1 = 1;
-	string Arg_2 = 2;
-	PtrToVolumeMessage Arg_3 = 3;
-	PtrToVolumeMessage Arg_4 = 4;
-	PtrToFlowRateMessage Arg_5 = 5;
-	PtrToFlowRateMessage Arg_6 = 6;
-	int64 Arg_7 = 7;
-	bool Arg_8 = 8;
-	int64 Arg_9 = 9;
-	int64 Arg_10 = 10;
+message ArrayOfstring{
+	repeated string arg_1=1;
 }
-message MapstringPtrToLHPlateMessageMessageFieldEntry{
+message ArrayOfint64{
+	repeated int64 arg_1=1;
+}
+message ArrayOfdouble{
+	repeated double arg_1=1;
+}
+message ArrayOfbool{
+	repeated bool arg_1=1;
+}
+message MapstringAnyMessageMessageFieldEntry{
 string key = 1;
-PtrToLHPlateMessage value = 2;
+AnyMessage value = 2;
 }
-message MapstringPtrToLHPlateMessageMessage{
-repeated MapstringPtrToLHPlateMessageMessageFieldEntry map_field =1;
+message MapstringAnyMessageMessage{
+repeated MapstringAnyMessageMessageFieldEntry map_field =1;
 }
-message PtrToLHTipwasteMessage{
-	LHTipwasteMessage arg_1=1;
-}
-message MapstringPtrToLHTipwasteMessageMessageFieldEntry{
-string key = 1;
-PtrToLHTipwasteMessage value = 2;
-}
-message MapstringPtrToLHTipwasteMessageMessage{
-repeated MapstringPtrToLHTipwasteMessageMessageFieldEntry map_field =1;
-}
-message LHHeadMessage {
-	string Arg_1 = 1;
-	string Arg_2 = 2;
+message CommandStatusMessage {
+	bool Arg_1 = 1;
+	int64 Arg_2 = 2;
 	string Arg_3 = 3;
-	PtrToLHAdaptorMessage Arg_4 = 4;
-	PtrToLHChannelParameterMessage Arg_5 = 5;
-}
-message PtrToLHHeadMessage{
-	LHHeadMessage arg_1=1;
-}
-message PtrToLHAdaptorMessage{
-	LHAdaptorMessage arg_1=1;
-}
-message LHTipMessage {
-	string Arg_1 = 1;
-	string Arg_2 = 2;
-	string Arg_3 = 3;
-	bool Arg_4 = 4;
-	PtrToVolumeMessage Arg_5 = 5;
-	PtrToVolumeMessage Arg_6 = 6;
 }
 message MapstringPtrToLHPositionMessageMessageFieldEntry{
 string key = 1;
@@ -404,56 +361,23 @@ PtrToLHPositionMessage value = 2;
 message MapstringPtrToLHPositionMessageMessage{
 repeated MapstringPtrToLHPositionMessageMessageFieldEntry map_field =1;
 }
-message MapstringCoordinatesMessageMessageFieldEntry{
-string key = 1;
-CoordinatesMessage value = 2;
-}
-message MapstringCoordinatesMessageMessage{
-repeated MapstringCoordinatesMessageMessageFieldEntry map_field =1;
-}
-message LHPositionMessage {
+message LHTipboxMessage {
 	string Arg_1 = 1;
-	string Arg_2 = 2;
-	int64 Arg_3 = 3;
-	ArrayOfLHDeviceMessage Arg_4 = 4;
-	double Arg_5 = 5;
-}
-message PtrToLHTipboxMessage{
-	LHTipboxMessage arg_1=1;
-}
-message MapstringPtrToLHTipboxMessageMessageFieldEntry{
-string key = 1;
-PtrToLHTipboxMessage value = 2;
-}
-message MapstringPtrToLHTipboxMessageMessage{
-repeated MapstringPtrToLHTipboxMessageMessageFieldEntry map_field =1;
-}
-message ArrayOfPtrToLHHeadMessage{
-	repeated PtrToLHHeadMessage arg_1=1;
-}
-message LHPlateMessage {
-	PtrToGenericEntityMessage Arg_1 = 1;
 	string Arg_2 = 2;
 	string Arg_3 = 3;
 	string Arg_4 = 4;
-	string Arg_5 = 5;
-	string Arg_6 = 6;
-	string Arg_7 = 7;
-	int64 Arg_8 = 8;
-	int64 Arg_9 = 9;
+	int64 Arg_5 = 5;
+	int64 Arg_6 = 6;
+	double Arg_7 = 7;
+	PtrToLHTipMessage Arg_8 = 8;
+	PtrToLHWellMessage Arg_9 = 9;
 	int64 Arg_10 = 10;
-	MapstringPtrToLHWellMessageMessage Arg_11 = 11;
+	ArrayOfArrayOfPtrToLHTipMessage Arg_11 = 11;
 	double Arg_12 = 12;
-	string Arg_13 = 13;
-	ArrayOfArrayOfPtrToLHWellMessage Arg_14 = 14;
-	ArrayOfArrayOfPtrToLHWellMessage Arg_15 = 15;
-	PtrToLHWellMessage Arg_16 = 16;
-	MapstringPtrToLHWellMessageMessage Arg_17 = 17;
-	double Arg_18 = 18;
-	double Arg_19 = 19;
-	double Arg_20 = 20;
-	double Arg_21 = 21;
-	double Arg_22 = 22;
+	double Arg_13 = 13;
+	double Arg_14 = 14;
+	double Arg_15 = 15;
+	double Arg_16 = 16;
 }
 message LHAdaptorMessage {
 	string Arg_1 = 1;
@@ -466,11 +390,50 @@ message LHAdaptorMessage {
 message PtrToLHTipMessage{
 	LHTipMessage arg_1=1;
 }
+message MapstringCoordinatesMessageMessageFieldEntry{
+string key = 1;
+CoordinatesMessage value = 2;
+}
+message MapstringCoordinatesMessageMessage{
+repeated MapstringCoordinatesMessageMessageFieldEntry map_field =1;
+}
+message PtrToLHPositionMessage{
+	LHPositionMessage arg_1=1;
+}
 message ArrayOfPtrToLHTipMessage{
 	repeated PtrToLHTipMessage arg_1=1;
 }
+message PtrToLHPlateMessage{
+	LHPlateMessage arg_1=1;
+}
+message MapstringPtrToLHPlateMessageMessageFieldEntry{
+string key = 1;
+PtrToLHPlateMessage value = 2;
+}
+message MapstringPtrToLHPlateMessageMessage{
+repeated MapstringPtrToLHPlateMessageMessageFieldEntry map_field =1;
+}
+message PtrToLHAdaptorMessage{
+	LHAdaptorMessage arg_1=1;
+}
+message LHPositionMessage {
+	string Arg_1 = 1;
+	string Arg_2 = 2;
+	int64 Arg_3 = 3;
+	ArrayOfLHDeviceMessage Arg_4 = 4;
+	double Arg_5 = 5;
+}
 message PtrToLHChannelParameterMessage{
 	LHChannelParameterMessage arg_1=1;
+}
+message ArrayOfPtrToLHChannelParameterMessage{
+	repeated PtrToLHChannelParameterMessage arg_1=1;
+}
+message ArrayOfPtrToLHAdaptorMessage{
+	repeated PtrToLHAdaptorMessage arg_1=1;
+}
+message PtrToLHTipboxMessage{
+	LHTipboxMessage arg_1=1;
 }
 message LHTipwasteMessage {
 	string Arg_1 = 1;
@@ -484,38 +447,83 @@ message LHTipwasteMessage {
 	double Arg_9 = 9;
 	PtrToLHWellMessage Arg_10 = 10;
 }
-message ArrayOfPtrToLHAdaptorMessage{
-	repeated PtrToLHAdaptorMessage arg_1=1;
-}
-message ArrayOfPtrToLHChannelParameterMessage{
-	repeated PtrToLHChannelParameterMessage arg_1=1;
+message LHHeadMessage {
+	string Arg_1 = 1;
+	string Arg_2 = 2;
+	string Arg_3 = 3;
+	PtrToLHAdaptorMessage Arg_4 = 4;
+	PtrToLHChannelParameterMessage Arg_5 = 5;
 }
 message CoordinatesMessage {
 	double Arg_1 = 1;
 	double Arg_2 = 2;
 	double Arg_3 = 3;
 }
-message LHTipboxMessage {
-	PtrToGenericSolidMessage Arg_1 = 1;
+message MapstringPtrToLHTipboxMessageMessageFieldEntry{
+string key = 1;
+PtrToLHTipboxMessage value = 2;
+}
+message MapstringPtrToLHTipboxMessageMessage{
+repeated MapstringPtrToLHTipboxMessageMessageFieldEntry map_field =1;
+}
+message PtrToLHTipwasteMessage{
+	LHTipwasteMessage arg_1=1;
+}
+message PtrToLHHeadMessage{
+	LHHeadMessage arg_1=1;
+}
+message LHTipMessage {
+	string Arg_1 = 1;
+	string Arg_2 = 2;
+	string Arg_3 = 3;
+	bool Arg_4 = 4;
+	VolumeMessage Arg_5 = 5;
+	VolumeMessage Arg_6 = 6;
+}
+message LHPlateMessage {
+	string Arg_1 = 1;
 	string Arg_2 = 2;
 	string Arg_3 = 3;
 	string Arg_4 = 4;
 	string Arg_5 = 5;
-	int64 Arg_6 = 6;
+	string Arg_6 = 6;
 	int64 Arg_7 = 7;
-	double Arg_8 = 8;
-	PtrToLHTipMessage Arg_9 = 9;
-	PtrToLHWellMessage Arg_10 = 10;
-	int64 Arg_11 = 11;
-	ArrayOfArrayOfPtrToLHTipMessage Arg_12 = 12;
-	double Arg_13 = 13;
-	double Arg_14 = 14;
-	double Arg_15 = 15;
-	double Arg_16 = 16;
+	int64 Arg_8 = 8;
+	int64 Arg_9 = 9;
+	MapstringPtrToLHWellMessageMessage Arg_10 = 10;
+	double Arg_11 = 11;
+	string Arg_12 = 12;
+	ArrayOfArrayOfPtrToLHWellMessage Arg_13 = 13;
+	ArrayOfArrayOfPtrToLHWellMessage Arg_14 = 14;
+	PtrToLHWellMessage Arg_15 = 15;
+	MapstringPtrToLHWellMessageMessage Arg_16 = 16;
 	double Arg_17 = 17;
+	double Arg_18 = 18;
+	double Arg_19 = 19;
+	double Arg_20 = 20;
+	double Arg_21 = 21;
 }
-message PtrToLHPositionMessage{
-	LHPositionMessage arg_1=1;
+message ArrayOfPtrToLHHeadMessage{
+	repeated PtrToLHHeadMessage arg_1=1;
+}
+message LHChannelParameterMessage {
+	string Arg_1 = 1;
+	string Arg_2 = 2;
+	VolumeMessage Arg_3 = 3;
+	VolumeMessage Arg_4 = 4;
+	FlowRateMessage Arg_5 = 5;
+	FlowRateMessage Arg_6 = 6;
+	int64 Arg_7 = 7;
+	bool Arg_8 = 8;
+	int64 Arg_9 = 9;
+	int64 Arg_10 = 10;
+}
+message MapstringPtrToLHTipwasteMessageMessageFieldEntry{
+string key = 1;
+PtrToLHTipwasteMessage value = 2;
+}
+message MapstringPtrToLHTipwasteMessageMessage{
+repeated MapstringPtrToLHTipwasteMessageMessageFieldEntry map_field =1;
 }
 message MapstringstringMessageFieldEntry{
 string key = 1;
@@ -524,61 +532,17 @@ string value = 2;
 message MapstringstringMessage{
 repeated MapstringstringMessageFieldEntry map_field =1;
 }
-message PtrToLHPlateMessage{
-	LHPlateMessage arg_1=1;
-}
-message GenericSolidMessage {
-	GenericPhysicalMessage Arg_1 = 1;
-	PtrToShapeMessage Arg_2 = 2;
-}
-message ArrayOfArrayOfPtrToLHTipMessage{
-	repeated ArrayOfPtrToLHTipMessage arg_1=1;
-}
-message GenericEntityMessage {
-	PtrToGenericSolidMessage Arg_1 = 1;
-	PtrToConcreteLocationMessage Arg_2 = 2;
-}
-message ArrayOfArrayOfPtrToLHWellMessage{
-	repeated ArrayOfPtrToLHWellMessage arg_1=1;
+message ArrayOfLHDeviceMessage{
+	repeated LHDeviceMessage arg_1=1;
 }
 message PtrToLHWellMessage{
 	LHWellMessage arg_1=1;
 }
-message PtrToGenericEntityMessage{
-	GenericEntityMessage arg_1=1;
-}
-message VolumeMessage {
-	ConcreteMeasurementMessage Arg_1 = 1;
-}
-message MapstringPtrToLHWellMessageMessageFieldEntry{
-string key = 1;
-PtrToLHWellMessage value = 2;
-}
-message MapstringPtrToLHWellMessageMessage{
-repeated MapstringPtrToLHWellMessageMessageFieldEntry map_field =1;
-}
-message PtrToGenericSolidMessage{
-	GenericSolidMessage arg_1=1;
-}
-message FlowRateMessage {
-	ConcreteMeasurementMessage Arg_1 = 1;
-}
-message ArrayOfLHDeviceMessage{
-	repeated LHDeviceMessage arg_1=1;
+message ArrayOfArrayOfPtrToLHTipMessage{
+	repeated ArrayOfPtrToLHTipMessage arg_1=1;
 }
 message ArrayOfPtrToLHWellMessage{
 	repeated PtrToLHWellMessage arg_1=1;
-}
-message PtrToVolumeMessage{
-	VolumeMessage arg_1=1;
-}
-message PtrToFlowRateMessage{
-	FlowRateMessage arg_1=1;
-}
-message LHDeviceMessage {
-	string Arg_1 = 1;
-	string Arg_2 = 2;
-	string Arg_3 = 3;
 }
 message LHWellMessage {
 	string Arg_1 = 1;
@@ -589,64 +553,56 @@ message LHWellMessage {
 	string Arg_6 = 6;
 	double Arg_7 = 7;
 	string Arg_8 = 8;
-	ArrayOfPtrToLHComponentMessage Arg_9 = 9;
+	PtrToLHComponentMessage Arg_9 = 9;
 	double Arg_10 = 10;
-	double Arg_11 = 11;
-	PtrToShapeMessage Arg_12 = 12;
-	int64 Arg_13 = 13;
+	PtrToShapeMessage Arg_11 = 11;
+	int64 Arg_12 = 12;
+	double Arg_13 = 13;
 	double Arg_14 = 14;
 	double Arg_15 = 15;
 	double Arg_16 = 16;
-	double Arg_17 = 17;
-	string Arg_18 = 18;
-	MapstringAnyMessageMessage Arg_19 = 19;
+	string Arg_17 = 17;
+	MapstringAnyMessageMessage Arg_18 = 18;
 }
-message PtrToConcreteLocationMessage{
-	ConcreteLocationMessage arg_1=1;
+message MapstringPtrToLHWellMessageMessageFieldEntry{
+string key = 1;
+PtrToLHWellMessage value = 2;
 }
-message ArrayOfPtrToLHComponentMessage{
-	repeated PtrToLHComponentMessage arg_1=1;
+message MapstringPtrToLHWellMessageMessage{
+repeated MapstringPtrToLHWellMessageMessageFieldEntry map_field =1;
 }
-message ConcreteMeasurementMessage {
-	double Arg_1 = 1;
-	PtrToGenericPrefixedUnitMessage Arg_2 = 2;
-}
-message GenericPhysicalMessage {
-	GenericMatterMessage Arg_1 = 1;
-	string Arg_2 = 2;
-	MassMessage Arg_3 = 3;
-	VolumeMessage Arg_4 = 4;
-	TemperatureMessage Arg_5 = 5;
-}
-message LHComponentMessage {
-	PtrToGenericPhysicalMessage Arg_1 = 1;
+message LHDeviceMessage {
+	string Arg_1 = 1;
 	string Arg_2 = 2;
 	string Arg_3 = 3;
-	int64 Arg_4 = 4;
+}
+message ArrayOfArrayOfPtrToLHWellMessage{
+	repeated ArrayOfPtrToLHWellMessage arg_1=1;
+}
+message VolumeMessage {
+	PtrToConcreteMeasurementMessage Arg_1 = 1;
+}
+message FlowRateMessage {
+	PtrToConcreteMeasurementMessage Arg_1 = 1;
+}
+message LHComponentMessage {
+	string Arg_1 = 1;
+	BlockIDMessage Arg_2 = 2;
+	string Arg_3 = 3;
+	string Arg_4 = 4;
 	string Arg_5 = 5;
-	string Arg_6 = 6;
-	double Arg_7 = 7;
-	double Arg_8 = 8;
-	string Arg_9 = 9;
-	string Arg_10 = 10;
-	double Arg_11 = 11;
+	int64 Arg_6 = 6;
+	string Arg_7 = 7;
+	int64 Arg_8 = 8;
+	double Arg_9 = 9;
+	double Arg_10 = 10;
+	string Arg_11 = 11;
 	string Arg_12 = 12;
 	double Arg_13 = 13;
 	double Arg_14 = 14;
 	double Arg_15 = 15;
-	string Arg_16 = 16;
+	double Arg_16 = 16;
 	MapstringAnyMessageMessage Arg_17 = 17;
-}
-message PtrToShapeMessage{
-	ShapeMessage arg_1=1;
-}
-message ConcreteLocationMessage {
-	string Arg_1 = 1;
-	string Arg_2 = 2;
-	string Arg_3 = 3;
-	ArrayOfPtrToConcreteLocationMessage Arg_4 = 4;
-	PtrToConcreteLocationMessage Arg_5 = 5;
-	PtrToShapeMessage Arg_6 = 6;
 }
 message ShapeMessage {
 	string Arg_1 = 1;
@@ -655,8 +611,21 @@ message ShapeMessage {
 	double Arg_4 = 4;
 	double Arg_5 = 5;
 }
+message PtrToShapeMessage{
+	ShapeMessage arg_1=1;
+}
+message ConcreteMeasurementMessage {
+	double Arg_1 = 1;
+	PtrToGenericPrefixedUnitMessage Arg_2 = 2;
+}
 message PtrToLHComponentMessage{
 	LHComponentMessage arg_1=1;
+}
+message PtrToConcreteMeasurementMessage{
+	ConcreteMeasurementMessage arg_1=1;
+}
+message BlockIDMessage {
+	string Arg_1 = 1;
 }
 message GenericPrefixedUnitMessage {
 	GenericUnitMessage Arg_1 = 1;
@@ -665,34 +634,13 @@ message GenericPrefixedUnitMessage {
 message PtrToGenericPrefixedUnitMessage{
 	GenericPrefixedUnitMessage arg_1=1;
 }
-message PtrToGenericPhysicalMessage{
-	GenericPhysicalMessage arg_1=1;
-}
-message ArrayOfPtrToConcreteLocationMessage{
-	repeated PtrToConcreteLocationMessage arg_1=1;
-}
-message GenericMatterMessage {
+message SIPrefixMessage {
 	string Arg_1 = 1;
-	TemperatureMessage Arg_2 = 2;
-	TemperatureMessage Arg_3 = 3;
-	SpecificHeatCapacityMessage Arg_4 = 4;
-}
-message MassMessage {
-	ConcreteMeasurementMessage Arg_1 = 1;
-}
-message TemperatureMessage {
-	ConcreteMeasurementMessage Arg_1 = 1;
+	double Arg_2 = 2;
 }
 message GenericUnitMessage {
 	string Arg_1 = 1;
 	string Arg_2 = 2;
 	double Arg_3 = 3;
 	string Arg_4 = 4;
-}
-message SIPrefixMessage {
-	string Arg_1 = 1;
-	double Arg_2 = 2;
-}
-message SpecificHeatCapacityMessage {
-	ConcreteMeasurementMessage Arg_1 = 1;
 }
