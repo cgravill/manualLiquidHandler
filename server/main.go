@@ -23,20 +23,17 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
-
-	"github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
-	"github.com/antha-lang/manualLiquidHandler/cli"
-
 	"os"
-
-	"flag"
 
 	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
 	"github.com/antha-lang/manualLiquidHandler"
-	"io/ioutil"
+	"github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
+	"github.com/antha-lang/manualLiquidHandler/cli"
 )
 
 var (
@@ -45,7 +42,7 @@ var (
 )
 
 func main() {
-	flag.IntVar(&port, "port", 50051, "Sepcify the port at which the server will be listening")
+	flag.IntVar(&port, "port", 50051, "port to listen on")
 	flag.StringVar(&view, "view", "cli", "Specify the wished view to display the messages: cli | cui")
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
@@ -75,7 +72,7 @@ func main() {
 	s := grpc.NewServer()
 	ExtendedLiquidhandlingDriver.RegisterExtendedLiquidhandlingDriverServer(s, manual)
 	go func() {
-		log.Println("Listening at :", port)
+		fmt.Println("Listening at", lis.Addr().String())
 		s.Serve(lis)
 	}()
 	x.Close()

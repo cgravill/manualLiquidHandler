@@ -1,4 +1,4 @@
-// anthalib/factory/make_liquidhandler_library.go: Part of the Antha language
+// factory/make_liquidhandler_library.go: Part of the Antha language
 // Copyright (C) 2015 The Antha authors. All rights reserved.
 //
 // This program is free software; you can redistribute it and/or
@@ -87,7 +87,7 @@ func makeManual() *liquidhandling.LHProperties {
 	minspd := wunit.NewFlowRate(0.5, "ml/min")
 	maxspd := wunit.NewFlowRate(2, "ml/min")
 
-	hvconfig := wtype.NewLHChannelParameter("P1000Config", &minvol, &maxvol, &minspd, &maxspd, 1, false, wtype.LHVChannel, 0)
+	hvconfig := wtype.NewLHChannelParameter("P1000Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	hvadaptor := wtype.NewLHAdaptor("P1000", "Gilson", hvconfig)
 
 	minvol = wunit.NewVolume(50, "ul")
@@ -95,7 +95,7 @@ func makeManual() *liquidhandling.LHProperties {
 	minspd = wunit.NewFlowRate(0.1, "ml/min")
 	maxspd = wunit.NewFlowRate(0.5, "ml/min")
 
-	mvconfig := wtype.NewLHChannelParameter("P200Config", &minvol, &maxvol, &minspd, &maxspd, 1, false, wtype.LHVChannel, 0)
+	mvconfig := wtype.NewLHChannelParameter("P200Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	mvadaptor := wtype.NewLHAdaptor("P200", "Gilson", mvconfig)
 
 	minvol = wunit.NewVolume(2, "ul")
@@ -103,7 +103,7 @@ func makeManual() *liquidhandling.LHProperties {
 	minspd = wunit.NewFlowRate(0.1, "ml/min")
 	maxspd = wunit.NewFlowRate(0.5, "ml/min")
 
-	lmvconfig := wtype.NewLHChannelParameter("P20Config", &minvol, &maxvol, &minspd, &maxspd, 1, false, wtype.LHVChannel, 0)
+	lmvconfig := wtype.NewLHChannelParameter("P20Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	lmvadaptor := wtype.NewLHAdaptor("P20", "Gilson", lmvconfig)
 
 	minvol = wunit.NewVolume(1, "ul")
@@ -111,7 +111,7 @@ func makeManual() *liquidhandling.LHProperties {
 	minspd = wunit.NewFlowRate(0.1, "ml/min")
 	maxspd = wunit.NewFlowRate(0.5, "ml/min")
 
-	lvconfig := wtype.NewLHChannelParameter("P10Config", &minvol, &maxvol, &minspd, &maxspd, 1, false, wtype.LHVChannel, 0)
+	lvconfig := wtype.NewLHChannelParameter("P10Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	lvadaptor := wtype.NewLHAdaptor("P10", "Gilson", lvconfig)
 
 	minvol = wunit.NewVolume(0.2, "ul")
@@ -119,12 +119,12 @@ func makeManual() *liquidhandling.LHProperties {
 	minspd = wunit.NewFlowRate(0.1, "ml/min")
 	maxspd = wunit.NewFlowRate(0.5, "ml/min")
 
-	vlvconfig := wtype.NewLHChannelParameter("P2Config", &minvol, &maxvol, &minspd, &maxspd, 1, false, wtype.LHVChannel, 0)
+	vlvconfig := wtype.NewLHChannelParameter("P2Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	vlvadaptor := wtype.NewLHAdaptor("P2", "Gilson", vlvconfig)
 
 	minvol = wunit.NewVolume(0.2, "ul")
 	maxvol = wunit.NewVolume(5000, "ul")
-	headparams := wtype.NewLHChannelParameter("LabHand", &minvol, &maxvol, &minspd, &maxspd, 8, false, wtype.LHVChannel, 0)
+	headparams := wtype.NewLHChannelParameter("LabHand", minvol, maxvol, minspd, maxspd, 8, false, wtype.LHVChannel, 0)
 	head := wtype.NewLHHead("LabHand", "MotherNature", headparams)
 	head.Adaptor = hvadaptor
 

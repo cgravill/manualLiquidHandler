@@ -154,7 +154,7 @@ func (m *Manual) Finalize(c context.Context, r *liquidhandlingDriver.FinalizeReq
 	}, nil
 }
 func (m *Manual) GetCapabilities(c context.Context, r *liquidhandlingDriver.GetCapabilitiesRequest) (*liquidhandlingDriver.GetCapabilitiesReply, error) {
-	var s dummyserver
+	var s server
 
 	return s.GetCapabilities()
 }
@@ -185,6 +185,11 @@ func (m *Manual) GetHeadState(c context.Context, r *liquidhandlingDriver.GetHead
 			"GETHEADSTATE ACK",
 		},
 	}, nil
+}
+
+func (m *Manual) GetOutputFile(c context.Context, r *liquidhandlingDriver.GetOutputFileRequest) (*liquidhandlingDriver.GetOutputFileReply, error) {
+	ret := liquidhandlingDriver.GetOutputFileReply{"", &liquidhandlingDriver.CommandStatusMessage{true, 0, ""}}
+	return &ret, nil
 }
 func (m *Manual) GetPositionState(c context.Context, r *liquidhandlingDriver.GetPositionStateRequest) (*liquidhandlingDriver.GetPositionStateReply, error) {
 	//res := m.translateCall("GETPOSITIONSTATE", r)

@@ -27,9 +27,9 @@ import (
 	"log"
 	"sync"
 
+	"github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
 	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
 	"github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
-	"github.com/antha-lang/manualLiquidHandler/internal/golang.org/x/net/context"
 )
 
 const (
