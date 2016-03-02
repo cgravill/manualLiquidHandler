@@ -82,6 +82,8 @@ func makeManual() *liquidhandling.LHProperties {
 	lhp.Wash_preferences = []string{"tip_wash"}
 	lhp.Waste_preferences = []string{"liquid_waste"}
 
+	adaptors := make([]*wtype.LHAdaptor, 0, 1)
+
 	minvol := wunit.NewVolume(200, "ul")
 	maxvol := wunit.NewVolume(1000, "ul")
 	minspd := wunit.NewFlowRate(0.5, "ml/min")
@@ -89,6 +91,8 @@ func makeManual() *liquidhandling.LHProperties {
 
 	hvconfig := wtype.NewLHChannelParameter("P1000Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	hvadaptor := wtype.NewLHAdaptor("P1000", "Gilson", hvconfig)
+
+	adaptors = append(adaptors, hvadaptor)
 
 	minvol = wunit.NewVolume(50, "ul")
 	maxvol = wunit.NewVolume(200, "ul")
@@ -98,6 +102,8 @@ func makeManual() *liquidhandling.LHProperties {
 	mvconfig := wtype.NewLHChannelParameter("P200Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	mvadaptor := wtype.NewLHAdaptor("P200", "Gilson", mvconfig)
 
+	adaptors = append(adaptors, mvadaptor)
+
 	minvol = wunit.NewVolume(2, "ul")
 	maxvol = wunit.NewVolume(20, "ul")
 	minspd = wunit.NewFlowRate(0.1, "ml/min")
@@ -105,6 +111,7 @@ func makeManual() *liquidhandling.LHProperties {
 
 	lmvconfig := wtype.NewLHChannelParameter("P20Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	lmvadaptor := wtype.NewLHAdaptor("P20", "Gilson", lmvconfig)
+	adaptors = append(adaptors, lmvadaptor)
 
 	minvol = wunit.NewVolume(1, "ul")
 	maxvol = wunit.NewVolume(10, "ul")
@@ -113,6 +120,7 @@ func makeManual() *liquidhandling.LHProperties {
 
 	lvconfig := wtype.NewLHChannelParameter("P10Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	lvadaptor := wtype.NewLHAdaptor("P10", "Gilson", lvconfig)
+	adaptors = append(adaptors, lvadaptor)
 
 	minvol = wunit.NewVolume(0.2, "ul")
 	maxvol = wunit.NewVolume(2, "ul")
@@ -121,20 +129,26 @@ func makeManual() *liquidhandling.LHProperties {
 
 	vlvconfig := wtype.NewLHChannelParameter("P2Config", minvol, maxvol, minspd, maxspd, 1, false, wtype.LHVChannel, 0)
 	vlvadaptor := wtype.NewLHAdaptor("P2", "Gilson", vlvconfig)
+	adaptors = append(adaptors, vlvadaptor)
 
-	minvol = wunit.NewVolume(0.2, "ul")
-	maxvol = wunit.NewVolume(5000, "ul")
-	headparams := wtype.NewLHChannelParameter("LabHand", minvol, maxvol, minspd, maxspd, 8, false, wtype.LHVChannel, 0)
-	head := wtype.NewLHHead("LabHand", "MotherNature", headparams)
-	head.Adaptor = hvadaptor
-
-	lhp.Adaptors = append(lhp.Adaptors, hvadaptor)
-	lhp.Adaptors = append(lhp.Adaptors, mvadaptor)
-	lhp.Adaptors = append(lhp.Adaptors, lmvadaptor)
-	lhp.Adaptors = append(lhp.Adaptors, lvadaptor)
-	lhp.Adaptors = append(lhp.Adaptors, vlvadaptor)
-	lhp.Heads = append(lhp.Heads, head)
-	lhp.HeadsLoaded = append(lhp.HeadsLoaded, head)
+	//minvol = wunit.NewVolume(0.2, "ul")
+	//maxvol = wunit.NewVolume(5000, "ul")
+	for i, adaptor := range adaptors {
+		maxvol = adaptor.Params.Maxvol
+		minvol = adaptor.Params.Minvol
+		maxspd = adaptor.Params.Maxspd
+		minspd = adaptor.Params.Minspd
+		headparams := wtype.NewLHChannelParameter(fmt.Sprintf("LabHand_%d", i+1), minvol, maxvol, minspd, maxspd, 8, false, wtype.LHVChannel, 0)
+		head := wtype.NewLHHead(fmt.Sprintf("LabHand_%d", i+1), "MotherNature", headparams)
+		head.Adaptor = adaptor
+		lhp.Heads = append(lhp.Heads, head)
+		lhp.HeadsLoaded = append(lhp.HeadsLoaded, head)
+	}
+	//	lhp.Adaptors = append(lhp.Adaptors, hvadaptor)
+	//	lhp.Adaptors = append(lhp.Adaptors, mvadaptor)
+	//	lhp.Adaptors = append(lhp.Adaptors, lmvadaptor)
+	//	lhp.Adaptors = append(lhp.Adaptors, lvadaptor)
+	//	lhp.Adaptors = append(lhp.Adaptors, vlvadaptor)
 	return lhp
 }
 
