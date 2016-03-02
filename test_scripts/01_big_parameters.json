@@ -2,13 +2,13 @@
     "Parameters": {
         "ConstructAssembly1": {
             "Atp": "ATP",
-            "AtpVol": "1ul",
+            "AtpVol": "1ml",
             "Buffer": "CutsmartBuffer",
-            "BufferVol": "2ul",
+            "BufferVol": "2ml",
             "InPlate": "greiner384",
             "InactivationTemp": "40C",
             "InactivationTime": "60s",
-            "LigVol": "1ul",
+            "LigVol": "1ml",
             "Ligase": "T4Ligase",
             "OutPlate": "pcrplate_with_cooler",
             "PartNames": [
@@ -17,33 +17,33 @@
                 "dna3"
             ],
             "PartVols": [
-                "3ul",
-                "3ul",
-                "3ul"
+                "3ml",
+                "3ml",
+                "3ml"
             ],
             "Parts": [
                 "dna_part",
                 "dna_part",
                 "dna_part"
             ],
-            "ReVol": "1ul",
+            "ReVol": "1ml",
             "ReactionTemp": "25C",
             "ReactionTime": "1800s",
-            "ReactionVolume": "20ul",
+            "ReactionVolume": "20ml",
             "RestrictionEnzyme": "SapI",
             "Vector": "standard_cloning_vector_mark_1",
-            "VectorVol": "3ul",
+            "VectorVol": "3ml",
             "Water": "water"
         },
         "ConstructAssembly2": {
             "Atp": "ATP",
-            "AtpVol": "1ul",
+            "AtpVol": "1ml",
             "Buffer": "CutsmartBuffer",
-            "BufferVol": "2ul",
+            "BufferVol": "2ml",
             "InPlate": "pcrplate_with_cooler",
             "InactivationTemp": "40C",
             "InactivationTime": "60s",
-            "LigVol": "1ul",
+            "LigVol": "1ml",
             "Ligase": "T4Ligase",
             "OutPlate": "greiner384",
             "PartNames": [
@@ -52,22 +52,22 @@
                 "dna6"
             ],
             "PartVols": [
-                "3ul",
-                "3ul",
-                "3ul"
+                "3ml",
+                "3ml",
+                "3ml"
             ],
             "Parts": [
                 "dna_part",
                 "dna_part",
                 "dna_part"
             ],
-            "ReVol": "1ul",
+            "ReVol": "1ml",
             "ReactionTemp": "25C",
             "ReactionTime": "1800s",
-            "ReactionVolume": "20ul",
+            "ReactionVolume": "20ml",
             "RestrictionEnzyme": "SapI",
             "Vector": "standard_cloning_vector_mark_1",
-            "VectorVol": "3ul",
+            "VectorVol": "3ml",
             "Water": "water"
         }
     }

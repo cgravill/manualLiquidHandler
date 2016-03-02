@@ -18,5 +18,6 @@ modules:
         - test_scripts
   docker:
     packages:
+      - pkg-config
       - libglpk-dev
       - libopencv-dev
