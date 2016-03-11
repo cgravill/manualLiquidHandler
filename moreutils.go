@@ -8,9 +8,9 @@ import (
 	wtype "github.com/antha-lang/antha/antha/anthalib/wtype"
 	wunit "github.com/antha-lang/antha/antha/anthalib/wunit"
 	context "github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
+	pb "github.com/antha-lang/antha/driver/pb/lh"
 	driver "github.com/antha-lang/antha/microArch/driver"
 	liquidhandling "github.com/antha-lang/antha/microArch/driver/liquidhandling"
-	pb "github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
 	factory "github.com/antha-lang/manualLiquidHandler/factory"
 )
 

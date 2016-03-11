@@ -31,8 +31,8 @@ import (
 	"os"
 
 	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
+	"github.com/antha-lang/antha/driver/pb/lh"
 	"github.com/antha-lang/manualLiquidHandler"
-	"github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
 	"github.com/antha-lang/manualLiquidHandler/cli"
 )
 
@@ -70,7 +70,7 @@ func main() {
 	manual := manualLiquidHandler.NewManual(x)
 
 	s := grpc.NewServer()
-	ExtendedLiquidhandlingDriver.RegisterExtendedLiquidhandlingDriverServer(s, manual)
+	lh.RegisterExtendedLiquidhandlingDriverServer(s, manual)
 	go func() {
 		fmt.Println("Listening at", lis.Addr().String())
 		s.Serve(lis)

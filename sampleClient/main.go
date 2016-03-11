@@ -29,7 +29,7 @@ import (
 
 	"github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
 	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
-	"github.com/antha-lang/manualLiquidHandler/ExtendedLiquidhandlingDriver"
+	"github.com/antha-lang/antha/driver/pb/lh"
 )
 
 const (
@@ -44,14 +44,14 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := ExtendedLiquidhandlingDriver.NewExtendedLiquidhandlingDriverClient(conn)
+	c := lh.NewExtendedLiquidhandlingDriverClient(conn)
 
 	wg := sync.WaitGroup{}
 	wg.Add(3)
 
 	go func() {
 		// Contact the server and print out its response.
-		r, err := c.Go(context.Background(), &ExtendedLiquidhandlingDriver.GoRequest{})
+		r, err := c.Go(context.Background(), &lh.GoRequest{})
 		if err != nil {
 			log.Printf("could not execute Stop: %v", err)
 		} else {
@@ -61,7 +61,7 @@ func main() {
 	}()
 	go func() {
 		// Contact the server and print out its response.
-		r, err := c.Stop(context.Background(), &ExtendedLiquidhandlingDriver.StopRequest{})
+		r, err := c.Stop(context.Background(), &lh.StopRequest{})
 		if err != nil {
 			log.Printf("could not execute Stop: %v", err)
 		} else {
@@ -71,7 +71,7 @@ func main() {
 	}()
 	go func() {
 		// Contact the server and print out its response.
-		r, err := c.RemoveAllPlates(context.Background(), &ExtendedLiquidhandlingDriver.RemoveAllPlatesRequest{})
+		r, err := c.RemoveAllPlates(context.Background(), &lh.RemoveAllPlatesRequest{})
 		if err != nil {
 			log.Printf("could not execute RemoveAllPlates: %v", err)
 		} else {
