@@ -1,23 +1,17 @@
-name: manualLiquidHandler
-peanutversion: 0.0.1
+apiversion: v2
+kind: package
+name: github.com/antha-lang/manualLiquidHandler
 version: 0.0.1
-dependson:
-  - antha
+build:
+  morelines:
+  - RUN apt-get update && apt-get install -y pkg-config libglpk-dev libopencv-dev
+deploy:
+  exposeports:
+  - 50051
 modules:
-  goservice:
-    deploypackage: github.com/antha-lang/manualLiquidHandler/server
-    exposeport: 50051
   golang:
-    package: github.com/antha-lang/manualLiquidHandler
-    buildpackages:
-      - ./...
-      - github.com/antha-lang/antha/cmd/antharun
-      - ~internal
-  compose:
-    - testpaths:
-        - test_scripts
-  docker:
-    packages:
-      - pkg-config
-      - libglpk-dev
-      - libopencv-dev
+    deploypackage: github.com/antha-lang/manualLiquidHandler/server
+    testpackages:
+    - ~internal
+    dependson:
+    - github.com/antha-lang/antha
