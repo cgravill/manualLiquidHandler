@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "",
+	"package": [
+		{
+			"checksumSHA1": "Fbm32K8IcQ2GNAkE2JfRYdABW9s=",
+			"path": "github.com/jroimartin/gocui",
+			"revision": "78f1aee25c9563909356d4e993abd5b951555ee0",
+			"revisionTime": "2016-11-14T20:56:17Z"
+		},
+		{
+			"checksumSHA1": "AjOAcEMWUhDcoX6HjzGf+FaKTxc=",
+			"path": "github.com/twinj/uuid",
+			"revision": "7bbe408d339787c56ec15568c947c0959db1b275",
+			"revisionTime": "2016-09-09T07:54:38Z"
+		}
+	],
+	"rootPath": "github.com/antha-lang/manualLiquidHandler"
+}
