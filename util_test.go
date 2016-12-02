@@ -1,22 +1,22 @@
 // util_test.go: Part of the Antha language
 // Copyright (C) 2015 The Antha authors. All rights reserved.
-// 
+//
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2
 // of the License, or (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-// 
+//
 // For more information relating to the software or licensing issues please
-// contact license@antha-lang.org or write to the Antha team c/o 
+// contact license@antha-lang.org or write to the Antha team c/o
 // Synthace Ltd. The London Bioscience Innovation Centre
 // 2 Royal College St, London NW1 0NH UK
 
@@ -24,12 +24,10 @@ package manualLiquidHandler
 
 import (
 	"encoding/json"
-	"fmt"
 	"reflect"
 	"strings"
 	"testing"
 
-	"github.com/antha-lang/manualLiquidHandler/internal/github.com/kylelemons/godebug/pretty"
 	"github.com/antha-lang/antha/antha/anthalib/wtype"
 )
 
@@ -55,7 +53,6 @@ func TestDecodeGenericPlateLHTipBox(t *testing.T) {
 	if reflect.TypeOf(out) != reflect.TypeOf(lhTipBox) {
 		t.Fatal("expecting output type ", reflect.TypeOf(lhTipBox), " got ", reflect.TypeOf(out))
 	} else if !reflect.DeepEqual(out, lhTipBox) {
-		fmt.Println(pretty.Compare(out, lhTipBox))
 		t.Fatal("The input and output contents are not the same")
 	}
 }
@@ -79,7 +76,6 @@ func TestDecodeGenericPlateLHTipWaste(t *testing.T) {
 	if reflect.TypeOf(out) != reflect.TypeOf(lht) {
 		t.Fatal("expecting output type ", reflect.TypeOf(lht), " got ", reflect.TypeOf(out))
 	} else if !reflect.DeepEqual(out, lht) {
-		fmt.Println(pretty.Compare(out, lht))
 		t.Fatal("The input and output contents are not the same")
 	}
 }
@@ -140,10 +136,9 @@ func TestToMultiLevelMessage(t *testing.T) {
 	t2["Hi"] = "Hello My Dear Friend"
 	t2["GoodBye"] = "I'll miss you but not much"
 	r2 := ToMultiLevelMessage(t2)
-	fmt.Println(r2)
 	//check contents
 	if len(r2) != 2 {
-		t.Fatal("Wrong lenght. Got ", len(r2), " Expected ", len(t2))
+		t.Fatal("Wrong length. Got ", len(r2), " Expected ", len(t2))
 	}
 	//TODO Contents are random because of maps, find easy way to check contents
 }
