@@ -1,8 +1,8 @@
 language: go
 go:
-  - 1.5
+  - 1.7
 install:
-  - go get -t -v ./...
+  - go list ./... | grep -v vendor | xargs go get -t -v
 script: make test
 notifications:
   hipchat:
