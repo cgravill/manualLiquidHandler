@@ -1,4 +1,4 @@
 test:
-	go test -v `go list ./... | grep -v internal`
+	go test `go list ./... | grep -v vendor`
 
 .PHONY: all

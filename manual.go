@@ -28,7 +28,7 @@ import (
 	"github.com/antha-lang/antha/antha/anthalib/wtype"
 	"github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
 	liquidhandlingDriver "github.com/antha-lang/antha/driver/pb/lh"
-	"github.com/antha-lang/manualLiquidHandler/internal/github.com/twinj/uuid"
+	"github.com/twinj/uuid"
 )
 
 //Manual struct that implements the liquidHandlerDriver and routes all functions via the underlying ManualExecuter

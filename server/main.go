@@ -25,7 +25,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net"
 	"os"
@@ -43,7 +42,6 @@ var (
 
 func main() {
 	flag.IntVar(&port, "port", 50051, "port to listen on")
-	flag.StringVar(&view, "view", "cli", "Specify the wished view to display the messages: cli | cui")
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
@@ -51,19 +49,10 @@ func main() {
 	}
 
 	var x manualLiquidHandler.ManualExecuter
-	if view == "cui" {
-		//set log output to nil so that we don't bother cui interface
-		log.SetOutput(ioutil.Discard)
-		x = cli.NewCUI()
-	} else if view == "cli" {
-		x = cli.NewReadWriterExecutor(
-			os.Stdin,
-			os.Stdout,
-		)
-	} else {
-		log.Printf("Unknow view given: %s\n", view)
-		os.Exit(1)
-	}
+	x = cli.NewReadWriterExecutor(
+		os.Stdin,
+		os.Stdout,
+	)
 
 	x.Init()
 
