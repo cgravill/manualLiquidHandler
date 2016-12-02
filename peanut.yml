@@ -12,6 +12,6 @@ modules:
   golang:
     deploypackage: github.com/antha-lang/manualLiquidHandler/server
     testpackages:
-    - ~internal
+    - ~vendor
     dependson:
     - github.com/antha-lang/antha
