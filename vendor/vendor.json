@@ -3,14 +3,38 @@
 	"ignore": "",
 	"package": [
 		{
+			"checksumSHA1": "39c+shSLmvturiMmkG4MjIFQQB4=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "5215b55f46b2b919f50a1df0eaa5886afe4e3b3d",
+			"revisionTime": "2015-11-05T21:09:06Z"
+		},
+		{
 			"checksumSHA1": "Fbm32K8IcQ2GNAkE2JfRYdABW9s=",
 			"path": "github.com/jroimartin/gocui",
 			"revision": "78f1aee25c9563909356d4e993abd5b951555ee0",
 			"revisionTime": "2016-11-14T20:56:17Z"
 		},
 		{
+			"checksumSHA1": "RZOdTSZN/PgcTqko5LzIAzw+UT4=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
+			"revisionTime": "2016-01-10T10:55:54Z"
+		},
+		{
+			"checksumSHA1": "FeVrmkBVO94QixjKtxeRrmggzkg=",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "976c720a22c8eb4eb6a0b4348ad85ad12491a506",
+			"revisionTime": "2016-09-25T22:06:09Z"
+		},
+		{
 			"checksumSHA1": "AjOAcEMWUhDcoX6HjzGf+FaKTxc=",
 			"path": "github.com/twinj/uuid",
+			"revision": "7bbe408d339787c56ec15568c947c0959db1b275",
+			"revisionTime": "2016-09-09T07:54:38Z"
+		},
+		{
+			"checksumSHA1": "RDPPGf+Fen2vch82rHFMIB7TGOo=",
+			"path": "github.com/twinj/uuid/savers",
 			"revision": "7bbe408d339787c56ec15568c947c0959db1b275",
 			"revisionTime": "2016-09-09T07:54:38Z"
 		}
