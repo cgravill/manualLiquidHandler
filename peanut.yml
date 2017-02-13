@@ -3,8 +3,7 @@ kind: package
 name: github.com/antha-lang/manualLiquidHandler
 version: 0.0.1
 build:
-  morelines:
-  - RUN apt-get update && apt-get install -y pkg-config libglpk-dev libopencv-dev
+  baseimage: docker.synthace.com/synthace/antha:1.7-build
 deploy:
   exposeports:
   - 50051
