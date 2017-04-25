@@ -7,11 +7,11 @@ import (
 	material "github.com/antha-lang/antha/antha/anthalib/material"
 	wtype "github.com/antha-lang/antha/antha/anthalib/wtype"
 	wunit "github.com/antha-lang/antha/antha/anthalib/wunit"
-	context "github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
 	pb "github.com/antha-lang/antha/driver/pb/lh"
 	driver "github.com/antha-lang/antha/microArch/driver"
 	liquidhandling "github.com/antha-lang/antha/microArch/driver/liquidhandling"
 	factory "github.com/antha-lang/manualLiquidHandler/factory"
+	context "golang.org/x/net/context"
 )
 
 type server struct {

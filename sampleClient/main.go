@@ -27,9 +27,9 @@ import (
 	"log"
 	"sync"
 
-	"github.com/antha-lang/antha/bvendor/golang.org/x/net/context"
-	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
 	"github.com/antha-lang/antha/driver/pb/lh"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
 )
 
 const (

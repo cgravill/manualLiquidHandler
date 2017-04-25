@@ -29,10 +29,10 @@ import (
 	"net"
 	"os"
 
-	"github.com/antha-lang/antha/bvendor/google.golang.org/grpc"
 	"github.com/antha-lang/antha/driver/pb/lh"
 	"github.com/antha-lang/manualLiquidHandler"
 	"github.com/antha-lang/manualLiquidHandler/cli"
+	"google.golang.org/grpc"
 )
 
 var (
