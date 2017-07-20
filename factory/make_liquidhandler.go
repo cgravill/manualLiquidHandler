@@ -23,17 +23,20 @@
 package factory
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/antha-lang/antha/antha/anthalib/wtype"
 	"github.com/antha-lang/antha/antha/anthalib/wunit"
+	"github.com/antha-lang/antha/inventory/testinventory"
 	"github.com/antha-lang/antha/microArch/driver/liquidhandling"
 )
 
 func SetUpTipsFor(lhp *liquidhandling.LHProperties) *liquidhandling.LHProperties {
-	tips := GetTipList()
-	for _, tt := range tips {
-		tb := GetTipByType(tt)
+	ctx := testinventory.NewContext(context.Background())
+
+	tips := testinventory.GetTipboxes(ctx)
+	for _, tb := range tips {
 		if tb.Mnfr == lhp.Mnfr || lhp.Mnfr == "MotherNature" {
 			lhp.Tips = append(lhp.Tips, tb.Tips[0][0])
 		}
