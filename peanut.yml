@@ -3,7 +3,7 @@ kind: package
 name: github.com/antha-lang/manualLiquidHandler
 version: 0.0.1
 build:
-  baseimage: docker.synthace.com/synthace/antha:1.7-build
+  baseimage: docker.synthace.com/synthace/antha:1.8-build
   commands:
   - go get golang.org/x/net/context
   - go get google.golang.org/grpc
